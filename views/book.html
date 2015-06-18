@@ -1,0 +1,52 @@
+<md-toolbar class="md-primary" layout="row">
+                <button ng-click="toggleSidenav('left')" hide-gt-sm class="menuBtn">
+                    <span class="visuallyhidden">Menu</span>
+                </button>
+                <h1 class="md-toolbar-tools titelmpd" hide-sm><img src="./assets/images/logo.png"></h1>
+            <div flex class="md-toolbar-tools" layout="row" layout-align="end">
+                   <a class="menulink" href="#/trip">New trip</a>                
+                    
+                <a class="menulink borderleft" href="#/profile">
+                    <% user.firstName %> <span hide-sm><% user.lastName %></span>
+                </a>
+                <span hide-sm class="profilepicwrapper">
+                        <img class="profilepic" src="./assets/images/proflepics/me.png" alt="profile picture of Jurgen Barbier">
+                    </span>
+            </div>          
+        </md-toolbar>
+<md-content layout="row" flex   class="homepage">
+    <div style="background-color:rgba(0,0,0,0.4);" layout-fill layout="row" layout-align="center center">
+        <div layout-padding layout="column"  class="formlayout md-whiteframe-z2">
+           <h2>Your trip details:</h2>
+           <div layout="column">
+               <span layout="row"><b>Destination:</b> <% booktrip.name %> (<% booktrip.region %>)</span>
+           </div>
+           <div layout="column" layout-padding>
+               <span layout="row"><b>Price:</b> <% booktrip.price.high | currency:'€ ' %></span>
+               <span layout="column">
+                   <span style="text-indent:20px"><b>Flight:</b> <% booktrip.priceDetails.flight | currency:'€ ' %></span>
+                   <span style="text-indent:20px"><b>Food:</b> <% booktrip.priceDetails.food | currency:'€ ' %></span>
+                   <span style="text-indent:20px"><b>Hotel:</b> <% booktrip.priceDetails.hotel | currency:'€ ' %></span>
+               </span>
+           </div>
+           <div layout="column" layout-padding>
+               <span layout="row"><b>Dates</b></span>
+               <span layout="column">
+                   <span style="text-indent:20px"><b>Departure:</b> <% tripsettings.departure | date : "mediumDate" %></span>
+                   <span style="text-indent:20px"><b>Return:</b> <% tripsettings.return | date : "mediumDate" %></span>
+               </span>
+           </div>
+           <div layout="column" layout-padding>
+               <span layout="row" ><b>Personal details</b></span>
+               <span layout="column">
+                   <span style="text-indent:20px"><b>Full Name:</b> <span style="margin-left:10px;"><% user.firstName + ' ' + user.lastName %></span> </span>
+                   <span style="text-indent:20px"><b>Adress:</b><span style="margin-left:38px;"><% user.address%></span></span>
+                   <span style="text-indent:115px;"><% user.postalCode + ' ' + user.city %></span>
+                   <span style="text-indent:20px"><b>Email:</b> <span style="margin-left:42px;"><% user.email %></span> </span>
+               </span>
+           </div>
+           <md-button href="#/confirmed" class="md-primary" layout-padding>Confirm</md-button>
+        </div>
+    </div>
+    
+</md-content>

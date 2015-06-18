@@ -1,0 +1,50 @@
+        <md-toolbar class="md-primary md-hue-3" layout="row">
+                <button ng-click="toggleSidenav('left')" hide-gt-sm class="menuBtn">
+                    <span class="visuallyhidden">Menu</span>
+                </button>
+                <h1 class="md-toolbar-tools titelmpd" hide-sm><img src="./assets/images/logo.png"></h1>
+            <div flex class="md-toolbar-tools" layout="row" layout-align="end">
+                   <a class="menulink" href="#/trip">New trip</a>                
+                    
+                <a class="menulink borderleft" href="#/profile">
+                    <% user.firstName %> <span hide-sm><% user.lastName %></span>
+                </a>
+                <span hide-sm class="profilepicwrapper">
+                        <img class="profilepic" src="./assets/images/proflepics/me.png" alt="profile picture of Jurgen Barbier">
+                    </span>
+            </div>          
+        </md-toolbar>
+<md-content layout="row" flex   class="homepage">
+        <div style="background-color:rgba(0,0,0,0.4);" layout-fill>
+   <form style="max-width:550px; margin-left:auto; margin-right:auto;" class="userform md-whiteframe-z2" layout-padding layout-align="center center"  layout="row" name="userForm" >
+    <div  layout="column">    
+                        <h2 style="margin-bottom:0px; text-align:center;">Trip settings</h2>
+                        <p style="margin-top:0px;font-size:12px; text-align:center;">(Fill in dates before moving on)</p>
+                        <div layout-sm="column" layout="row">
+                            <md-input-container >
+                              <label>Departure data</label>
+                              <input type="date" ng-model="tripsettings.departure">
+                            </md-input-container>
+                            <md-input-container >
+                              <label>Return Date</label>
+                              <input type="date" ng-model="tripsettings.return">
+                            </md-input-container>
+                        </div>
+                        <% newtrip.departure | date : yyyy/mm/dd %> <% newtrip.return | date : yyyy/mm/dd %>
+                        <div layout="column" layout-fill layout-align="center center">
+                            <h2 style="margin-bottom:0px;">Budget settings</h2>
+                            <p style="margin-top:0px;font-size:12px;">(Set 0 if budget doesn't matter)</p>
+                        <div layout-fill>
+
+                          <md-slider min="0" max="15000" ng-model="tripsettings.budget" aria-label="red" id="red-slider" class="md-primary">
+                          </md-slider>
+                          <div  layout layout-align="center center">
+                            <input type="text" ng-model="tripsettings.budget" aria-label="red" aria-controls="red-slider">€
+                          </div>
+                        </div>
+                    </div>
+                    <md-button ng-disabled="tripsettings.departure == null || tripsettings.return == null || tripsettings.departure > tripsettings.return" style="margin-top: 40px;" ng-click="plantrip()" class="md-raised loginbutton">Go to results</md-button>     
+                </form>
+            </div>
+       </div> 
+       </md-content>

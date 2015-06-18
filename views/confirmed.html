@@ -1,0 +1,25 @@
+<md-toolbar class="md-primary" layout="row">
+                <button ng-click="toggleSidenav('left')" hide-gt-sm class="menuBtn">
+                    <span class="visuallyhidden">Menu</span>
+                </button>
+                <h1 class="md-toolbar-tools titelmpd" hide-sm><img src="./assets/images/logo.png"></h1>
+            <div flex class="md-toolbar-tools" layout="row" layout-align="end">
+                   <a  class="menulink" href="#/trip">New trip</a>                
+                    
+                <a class="menulink borderleft" href="#/profile">
+                    <% user.firstName %> <span hide-sm><% user.lastName %></span>
+                </a>
+                <span hide-sm class="profilepicwrapper">
+                        <img class="profilepic" src="./assets/images/proflepics/me.png" alt="profile picture of Jurgen Barbier">
+                    </span>
+            </div>          
+        </md-toolbar>
+<md-content layout="row" flex   class="homepage">
+    <div style="background-color:rgba(0,0,0,0.4);" layout-fill layout="row" layout-align="center center">
+        <div layout-padding layout="column"  class="formlayout md-whiteframe-z2">
+           <h2>Your trip has been booked, have a safe trip!</h2>
+           <md-button href="#/profile" class="md-primary" layout-padding>back to profile</md-button>
+        </div>
+    </div>
+    
+</md-content>

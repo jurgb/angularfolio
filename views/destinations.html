@@ -1,0 +1,273 @@
+        <md-toolbar class="md-primary md-hue-3" layout="row">
+                <button ng-click="toggleSidenav('left')" hide-gt-sm class="menuBtn">
+                    <span class="visuallyhidden">Menu</span>
+                </button>
+                <h1 class="md-toolbar-tools titelmpd" hide-sm><img src="./assets/images/logo.png"></h1>
+            <div flex class="md-toolbar-tools" layout="row" layout-align="end">
+                   <a class="menulink" href="#/trip">New trip</a>                
+                    
+                <a class="menulink borderleft" href="#/profile">
+                    <% user.firstName %> <span hide-sm><% user.lastName %></span>
+                </a>
+                <span hide-sm class="profilepicwrapper">
+                        <img class="profilepic" src="./assets/images/proflepics/me.png" alt="profile picture of Jurgen Barbier">
+                    </span>
+            </div>          
+        </md-toolbar>
+        <div flex layout="row">
+            <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+                <md-list layout="column" class="categorie-list">
+<!--
+                    <md-item ng-repeat="it in vacationtypes">
+                        <md-item-content>
+                            <md-button ng-click="selectVacType(it)" ng-class="{'selected' : it === selectedVacType }">
+                                <img ng-src="<% it.iconurl %>" class="face" alt="">
+                                <% it.name %>
+                            </md-button>
+                        </md-item-content>
+                    </md-item>
+-->
+              <md-item ng-if="user.travel.cartravel">
+                        <md-item-content>
+                            <md-button ng-click="selectVacType(1)" ng-class="{'selected' : vacationtypes[1] === selectedVacType }">
+                                <img ng-src="./assets/images/icons/car.svg" class="face" alt="">
+                                Car vacation
+                            </md-button>
+                        </md-item-content>
+                </md-item>
+               <md-item>
+                        <md-item-content>
+                            <md-button ng-click="selectVacType(2)" ng-class="{'selected' : vacationtypes[2] === selectedVacType }">
+                                <img ng-src="./assets/images/icons/ski.svg" class="face" alt="">
+                                Ski vacation
+                            </md-button>
+                        </md-item-content>
+                </md-item>
+                <md-item>
+                        <md-item-content>
+                            <md-button ng-click="selectVacType(3)" ng-class="{'selected' : vacationtypes[3] === selectedVacType }">
+                                <img ng-src="./assets/images/icons/sun.svg" class="face" alt="">
+                                Sun vacation
+                            </md-button>
+                        </md-item-content>
+                </md-item>
+                <md-item ng-if="user.travel.airtravel">
+                        <md-item-content>
+                            <md-button ng-click="selectVacType(4)" ng-class="{'selected' : vacationtypes[4] === selectedVacType }">
+                                <img ng-src="./assets/images/icons/plane.svg" class="face" alt="">
+                                Fly vacation
+                            </md-button>
+                        </md-item-content>
+                </md-item>
+                <md-item>
+                    <md-item-content>
+                            <md-button class="bordertop"  href="#/trip">
+                                <p layout-fill layout="row" layout-align="center center">Change trip settings</p>
+                            </md-button>
+                    </md-item-content>
+                </md-item>
+                </md-list>
+            </md-sidenav>
+            <md-content layout="column" layout-fill>
+                <div id="banner" layout="Row" layout-margin layout-fill>
+                    <div layout="row" layout-align="start end" flex-sm="60" flex-md="50" flex-gt-md="70" class="location">
+                        <img class="svg-small" src="./assets/images/icons/geo.svg" alt="">
+                        Berlin
+                        <span class="small-text">Germany, Europe</span>
+                    </div>
+                    <div layout="column" layout-align="center center" flex-sm="20" flex-md="25" flex-gt-md="15" class="besttime">
+                        <img class="svg-md promo-img" src="./assets/images/icons/today.svg" alt="">
+                        <span>Best time to visit</span>
+                        <span style="font-weight:bold; font-size:18px;">March</span>
+                    </div>
+                    <div layout="column" layout-align="center center" flex-sm="20" flex-md="25" flex-gt-md="15" class="cheapestticket">
+                        <img class="svg-md promo-img" src="./assets/images/icons/cheap.svg" alt="">
+                        <span>Average cost</span>
+                        <span style="font-weight:bold; font-size:18px;">€250</span>
+                        <span>per person</span>
+                        <span>per night</span>
+                    </div>
+                </div>
+                <div layout="column">
+                    <div layout="column" style="margin-top:20px;margin-bottom:20px;" layout-align="center center">
+                        <h2 style="text-align:center; margin-bottom: 50px;"><% selectedVacType.name %></h2>
+                        <md-progress-circular ng-show="loading" md-diameter="20" id="loadgif" class="md-primary" md-mode="indeterminate"></md-progress-circular>
+                        <span layout-margin layout-padding ng-show="noresultsfound" class="feedbackinfo">No results found, please change your trip settings!</span>
+                    </div>
+                    <div ng-if="selectedVacType.selector" layout="column" layout-align="start center" >
+                        <p class="feedbackinfo" hide show-gt-sm>Note: To change it later use the menu on the left side</p>
+                        <p class="feedbackinfo" hide-gt-sm >Note: To change it later use the menu by clicking the logo</p>
+                        <md-list layout-gt-md="row" layout-sm="column" class="categorie-list">
+                          <md-item ng-if="user.travel.cartravel">
+                                    <md-item-content>
+                                        <md-button ng-click="selectVacType(1)" ng-class="{'selected' : vacationtypes[1] === selectedVacType }">
+                                            <img ng-src="./assets/images/icons/car.svg" class="face" alt="">
+                                            Car vacation
+                                        </md-button>
+                                    </md-item-content>
+                            </md-item>
+                           <md-item>
+                                    <md-item-content>
+                                        <md-button ng-click="selectVacType(2)" ng-class="{'selected' : vacationtypes[2] === selectedVacType }">
+                                            <img ng-src="./assets/images/icons/ski.svg" class="face" alt="">
+                                            Ski vacation
+                                        </md-button>
+                                    </md-item-content>
+                            </md-item>
+                            <md-item>
+                                    <md-item-content>
+                                        <md-button ng-click="selectVacType(3)" ng-class="{'selected' : vacationtypes[3] === selectedVacType }">
+                                            <img ng-src="./assets/images/icons/sun.svg" class="face" alt="">
+                                            Sun vacation
+                                        </md-button>
+                                    </md-item-content>
+                            </md-item>
+                            <md-item ng-if="user.travel.airtravel">
+                                    <md-item-content>
+                                        <md-button ng-click="selectVacType(4)" ng-class="{'selected' : vacationtypes[4] === selectedVacType }">
+                                            <img ng-src="./assets/images/icons/plane.svg" class="face" alt="">
+                                            Fly vacation
+                                        </md-button>
+                                    </md-item-content>
+                            </md-item>
+
+                        </md-list>
+                    </div>
+                    
+                    <div ng-switch="selectedVacType.id">
+                    <div layout="row" ng-switch-when="1" layout-wrap>
+                        </div>
+<!-- car vakanties -->  
+                        <div layout="row" ng-switch-when="2" layout-wrap>
+                            <md-list id="destinationlist" layout="row" layout-wrap layout-align="center start"  ng-init="cardestinations()" >                        
+                        <md-item ng-repeat="dest in cardestinations | filter:carVacationFilter">
+                          
+                            <md-item-content>
+                                       <md-button class="md-primary"  ng-click="showAdvanced(dest)">
+                                       <md-card >
+                                             <img class="dest_img" src="<% dest.image %>" alt="">
+                                         <md-card-content class="cardcontentcontainer" layout="row" >
+                                               <span layout="column" layout-align="center start">
+                                                   <span class="destinfospan"><% dest.name  %></span>
+                                                   <span class="destinfospan" >From <% dest.priceDetails.food + dest.priceDetails.hotel | currency:'€ ' %></span>
+                                                </span>
+                                                <span ng-if="dest.matchrate.total" class="matchperccontainer" layout="column" layout-align="center center">
+                                                    <p class="matchperctext"><% dest.matchrate.total | number:0 %>%</p>
+                                                    <span class="matchperctext">Match</span>
+                                                        <md-progress-circular md-diameter="70" style="margin-top:-40px;" class="md-primary" md-mode="determinate" value="<% dest.matchrate.total | number:0 %>">
+                                                </span>
+                                         </md-card-content>
+                                        </md-card>
+                                        </md-button>
+                                    </md-item-content>
+                        </md-item>
+                    </md-list>
+                        </div>
+<!-- SKi vakanties -->                       
+                        <div layout="row" ng-switch-when="3" layout-wrap>
+                            <md-list id="destinationlist" layout="row" layout-wrap layout-align="center start"  ng-init="skidestinations()" >                        
+                                <md-item ng-repeat="dest in skidestinations">
+                                    <md-item-content>
+                                       <md-button class="md-primary"  ng-click="showAdvanced(dest)">
+                                       <md-card >
+                                             <img class="dest_img" src="<% dest.image %>" alt="">
+                                         <md-card-content class="cardcontentcontainer" layout="row" >
+                                               <span layout="column" layout-align="center start">
+                                                   <span class="destinfospan"><% dest.name  %></span>
+                                                   <span class="destinfospan" >From <% dest.priceDetails.food + dest.priceDetails.hotel | currency:'€ ' %></span>
+                                                </span>
+                                                <span ng-if="dest.matchrate.total" class="matchperccontainer" layout="column" layout-align="center center">
+                                                    <p class="matchperctext"><% dest.matchrate.total | number:0 %>%</p>
+                                                    <span class="matchperctext">Match</span>
+                                                        <md-progress-circular md-diameter="70" style="margin-top:-40px;" class="md-primary" md-mode="determinate" value="<% dest.matchrate.total | number:0 %>">
+                                                </span>
+                                         </md-card-content>
+                                        </md-card>
+                                        </md-button>
+                                    </md-item-content>
+                                </md-item>
+                            </md-list>
+                        </div>
+<!-- Sun vakanties -->                       
+                        <div layout="row" ng-switch-when="4" layout-wrap>
+                            <md-list id="destinationlist" layout="row" layout-wrap layout-align="center start"  ng-init="sundestinations()" >
+                                <md-item ng-repeat="dest in sundestinations | orderBy:'matchrate.total':reverse='true'">
+                                    <md-item-content>
+                                       <md-button class="md-primary"  ng-click="showAdvanced(dest)">
+                                       <md-card >
+                                             <img class="dest_img" src="<% dest.image %>" alt="">
+                                         <md-card-content class="cardcontentcontainer" layout="row" >
+                                               <span layout="column" layout-align="center start">
+                                                   <span class="destinfospan"><% dest.name  %></span>
+                                                   <span class="destinfospan" >From <% dest.priceDetails.food + dest.priceDetails.hotel | currency:'€ ' %></span>
+                                                </span>
+                                                <span ng-if="dest.matchrate.total" class="matchperccontainer" layout="column" layout-align="center center">
+                                                    <p class="matchperctext"><% dest.matchrate.total | number:0 %>%</p>
+                                                    <span class="matchperctext">Match</span>
+                                                        <md-progress-circular md-diameter="70" style="margin-top:-40px;" class="md-primary" md-mode="determinate" value="<% dest.matchrate.total | number:0 %>">
+                                                </span>
+                                         </md-card-content>
+                                        </md-card>
+                                        </md-button>
+                                    </md-item-content>
+                                </md-item>
+                            </md-list>
+                        </div>
+<!-- fly vakanties -->  
+                        <div layout="row" ng-switch-when="5" layout-wrap>
+                            <md-list id="destinationlist" layout="row" layout-wrap layout-align="center start"  ng-init="flydestinations()" >                        
+                        <md-item ng-repeat="dest in flydestinations">
+                          
+                            <md-item-content>
+                                       <md-button class="md-primary"  ng-click="showAdvanced(dest)">
+                                       <md-card >
+                                             <img class="dest_img" src="<% dest.image %>" alt="">
+                                         <md-card-content class="cardcontentcontainer" layout="row" >
+                                               <span layout="column" layout-align="center start">
+                                                   <span class="destinfospan"><% dest.name  %></span>
+                                                   <span class="destinfospan" >From <% dest.priceDetails.food + dest.priceDetails.hotel | currency:'€ ' %></span>
+                                                </span>
+                                                <span ng-if="dest.matchrate.total" class="matchperccontainer" layout="column" layout-align="center center">
+                                                    <p class="matchperctext"><% dest.matchrate.total | number:0 %>%</p>
+                                                    <span class="matchperctext">Match</span>
+                                                        <md-progress-circular md-diameter="70" style="margin-top:-40px;" class="md-primary" md-mode="determinate" value="<% dest.matchrate.total | number:0 %>">
+                                                </span>
+                                         </md-card-content>
+                                        </md-card>
+                                        </md-button>
+                                    </md-item-content>
+                        </md-item>
+                    </md-list>
+                        </div>
+<!-- default vakanties -->  
+                        <div layout="row" ng-switch-default layout-wrap>
+                            <md-list id="destinationlist" layout="row" layout-wrap layout-align="center start"  ng-init="cardestinations()" >                        
+                        <md-item ng-repeat="dest in cardestinations">
+                          
+                            <md-item-content>
+                                       <md-button class="md-primary"  ng-click="showAdvanced(dest)">
+                                       <md-card >
+                                             <img class="dest_img" src="<% dest.image %>" alt="">
+                                         <md-card-content class="cardcontentcontainer" layout="row" >
+                                               <span layout="column" layout-align="center start">
+                                                   <span class="destinfospan"><% dest.name  %></span>
+                                                   <span class="destinfospan" >From <% dest.priceDetails.food + dest.priceDetails.hotel | currency:'€ ' %></span>
+                                                </span>
+                                                <span ng-if="dest.matchrate.total" class="matchperccontainer" layout="column" layout-align="center center">
+                                                    <p class="matchperctext"><% dest.matchrate.total | number:0 %>%</p>
+                                                    <span class="matchperctext">Match</span>
+                                                        <md-progress-circular md-diameter="70" style="margin-top:-40px;" class="md-primary" md-mode="determinate" value="<% dest.matchrate.total | number:0 %>">
+                                                </span>
+                                         </md-card-content>
+                                        </md-card>
+                                        </md-button>
+                                    </md-item-content>
+                        </md-item>
+                    </md-list>
+                        </div>
+                    </div><!-- end switch-->
+                       
+                </div>
+                
+            </md-content>
+        </div>

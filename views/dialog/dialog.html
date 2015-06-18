@@ -1,0 +1,51 @@
+<md-dialog aria-label="More information">
+  <md-dialog-content class="sticky-container">
+    <md-subheader class="md-sticky-no-effect ">
+        <md-button ng-click="cancel()" class="md-primary">
+         Go back
+        </md-button>
+        <md-button ng-click="answer(item)" class="md-primary">
+          Book trip
+        </md-button>
+    </md-subheader>
+    <div layout="column" layout-fill>
+        <div layout-margin layout-padding layout-sm="column" layout="row">
+            <img flex-gt-sm="33" src="<% item.image %>" alt="Picture of <% item.name %>">
+            <div flex-gt-sm layout-margin layout-padding layout="column">
+                <span layout="row">
+                    <h2><% item.name %></h2>&nbsp;
+                    <h4>(<% item.region %>)</h4>
+                </span>
+                
+                <p><% item.description %></p>
+            </div>
+             
+        </div>
+        <div layout-margin layout-fill layout-sm="column" layout="row">
+            <span class="destdetailspan"  layout-padding flex layout="column">
+                <h4>Distance</h4>
+                <span><% item.distance.miles %> miles</span>
+                <span>(~<% item.distance.miles * 1.609344 |number:0 %> km)</span>
+            </span>
+            <span class="destdetailspan"  layout-padding flex layout="column">
+                <h4>Currency</h4>
+                <span>Name:<% item.currency.name %></span>
+                <span>Symbol:<% item.currency.symbol %></span>
+                <span>ISO-code:<% item.currency.isoCode  %></span>
+            </span>
+            <span  class="destdetailspan" layout-padding flex layout="column">
+                <h4>Matchrate (<% item.matchrate.total %>%)</h4>
+                <span ng-if="item.matchrate.weather">Weather: <% item.matchrate.weather %>% </span>
+                <span ng-if="item.matchrate.sentiment">Surroundings: <% item.matchrate.sentiment %>% </span> 
+                <span ng-if="item.matchrate.activity">Activities: <% item.matchrate.activity %> %</span>
+                <span ng-if="item.raw.food">Food: <% item.raw.food %> %</span>
+            </span>
+            <span class="destdetailspan"  layout-padding flex layout="column">
+                <h4>Price</h4>
+                <span> flight: <% item.priceDetails.flight | currency:'€ ' %></span>
+                <span> Stay:  <% item.priceDetails.food + item.priceDetails.hotel | currency:'€ ' %></span>
+            </span>
+        </div>
+    </div>
+  </md-dialog-content>
+</md-dialog>

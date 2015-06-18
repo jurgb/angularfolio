@@ -1,0 +1,38 @@
+<md-toolbar class="md-primary md-hue-3" layout="row">
+            
+            <h1 class="md-toolbar-tools titelmpd" hide-sm><img src="./assets/images/logo.png"></h1>
+            <div flex class="md-toolbar-tools" layout="row" layout-align="end">
+                <a class="menulink" href="#/signup">Sign up</a>                
+                <a class="menulink borderleft" href="#/">Sign in</a>
+    
+            </div>          
+</md-toolbar>
+<md-content layout="row" flex   class="homepage">
+    <div style="background-color:rgba(0,0,0,0.4);" layout-fill layout="row" layout-align="center center">
+        <div layout="column"  class="formlayout md-whiteframe-z2">
+            <span id="responsemessage"></span>
+           <form name="addcustomer" method="POST">
+            <md-input-container>
+                  <label>Firstname</label>
+                  <input ng-model="newuser.firstName" name="firstName" placeholder="ex. Jurgen">
+            </md-input-container>
+            <md-input-container>
+                  <label>Lastname</label>
+                  <input ng-model="newuser.lastName" name="lastName" placeholder="ex. Barbier">
+            </md-input-container>
+            <md-input-container>
+                  <label>Email</label>
+                  <input ng-model="newuser.email" name="email" placeholder="ex. jurgenbarbier@mpd.com">
+            </md-input-container>
+             <md-input-container>
+                  <label>Password</label>
+                  <input type="password" name="password" ng-model="newuser.password">
+                </md-input-container>
+                <md-input-container>
+                <md-button ng-click="adduser()" class="md-raised loginbutton" name="add">Sign up</md-button>
+            </md-input-container>
+            </form>
+        </div>
+    </div>
+    
+</md-content>
