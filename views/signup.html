@@ -1,38 +1,66 @@
-<md-toolbar class="md-primary md-hue-3" layout="row">
-            
-            <h1 class="md-toolbar-tools titelmpd" hide-sm><img src="./assets/images/logo.png"></h1>
-            <div flex class="md-toolbar-tools" layout="row" layout-align="end">
-                <a class="menulink" href="#/signup">Sign up</a>                
-                <a class="menulink borderleft" href="#/">Sign in</a>
-    
-            </div>          
+<md-toolbar class="md-primary" layout="row">
+    <a href="#/">Home</a>
 </md-toolbar>
-<md-content layout="row" flex   class="homepage">
-    <div style="background-color:rgba(0,0,0,0.4);" layout-fill layout="row" layout-align="center center">
-        <div layout="column"  class="formlayout md-whiteframe-z2">
-            <span id="responsemessage"></span>
-           <form name="addcustomer" method="POST">
+<md-content flex style="padding-right:50px;" layout="row">
+    <div md-swipe-left="onSwipeLeft()" layout="row" flex layout-align="center center">
+        Some content here to promote the new application
+    </div>
+    <div  layout="row" layout-align="end center">
+        <div layout="column"  class="signupform md-whiteframe-z1">
+          <md-toolbar class="md-theme-light">
+                <h1 class="md-toolbar-tools">Signup</h1>
+          </md-toolbar>
+           <form layout-padding name="addcustomer" method="POST">
             <md-input-container>
                   <label>Firstname</label>
-                  <input ng-model="newuser.firstName" name="firstName" placeholder="ex. Jurgen">
+                  <input ng-model="newuser.firstName" name="firstName">
             </md-input-container>
             <md-input-container>
                   <label>Lastname</label>
-                  <input ng-model="newuser.lastName" name="lastName" placeholder="ex. Barbier">
+                  <input ng-model="newuser.lastName" name="lastName">
             </md-input-container>
             <md-input-container>
                   <label>Email</label>
-                  <input ng-model="newuser.email" name="email" placeholder="ex. jurgenbarbier@mpd.com">
+                  <input ng-model="newuser.email" name="email">
             </md-input-container>
              <md-input-container>
                   <label>Password</label>
                   <input type="password" name="password" ng-model="newuser.password">
-                </md-input-container>
-                <md-input-container>
-                <md-button ng-click="adduser()" class="md-raised loginbutton" name="add">Sign up</md-button>
+            </md-input-container>
+            <md-input-container>
+                <md-button ng-click="login()" class="md-raised loginbutton" name="add">Sign up</md-button>
             </md-input-container>
             </form>
+            <span layout-padding>
+                <p>Already have an account? <a href="#" ng-click="toggleRight()" onClick=" return false;">Login</a></p>
+            </span>
         </div>
     </div>
     
+    <md-sidenav id="loginnav" class="md-sidenav-right md-whiteframe-z1" md-component-id="right">
+      <md-toolbar class="md-theme-light">
+        <h1 class="md-toolbar-tools">Login</h1>
+      </md-toolbar>
+      <md-content  layout-padding>
+        <div ng-show="showerror" layout="row" layout-align="space-around" class="errormessage">
+            <% error %>
+        </div>
+        <form name="login" method="POST">
+        <md-input-container>
+              <label>Username</label>
+              <input ng-model="loginuser.email" name="email">
+        </md-input-container>
+         <md-input-container>
+              <label>Password</label>
+              <input type="password" name="password" ng-model="loginuser.password">
+            </md-input-container>
+            <md-input-container>
+            <md-button ng-click="login()" class="md-raised loginbutton" name="login">Login</md-button>
+        </md-input-container>
+            </form>
+        <md-button ng-click="close()" class="md-primary">
+          Close
+        </md-button>
+      </md-content>
+    </md-sidenav>
 </md-content>
