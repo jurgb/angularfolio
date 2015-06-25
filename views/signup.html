@@ -45,10 +45,10 @@
         <div ng-show="showerror" layout="row" layout-align="space-around" class="errormessage">
             <% error %>
         </div>
-        <form name="login" method="post">
+        <form name="loginform" method="POST">
         <md-input-container>
               <label>Username</label>
-              <input ng-model="loginuser.email" name="email">
+              <input ng-model="loginuser.username" name="username">
         </md-input-container>
          <md-input-container>
               <label>Password</label>

@@ -2,17 +2,17 @@
         <div ng-show="showerror" layout="row" layout-align="space-around" class="errormessage">
             <% error %>
         </div>
-        <form name="addcustomer" method="POST">
+        <form name="loginform" method="POST">
         <md-input-container>
               <label>Username</label>
-              <input ng-model="loginuser.username" name="username">
+              <input ng-model="loginuser.username" name="username" autocomplete="off">
         </md-input-container>
          <md-input-container>
               <label>Password</label>
-              <input type="password" name="password" ng-model="loginuser.password">
+              <input type="password" name="password" ng-model="loginuser.password" autocomplete="off">
             </md-input-container>
             <md-input-container>
             <md-button ng-click="login()" class="md-raised loginbutton" name="login">Login</md-button>
         </md-input-container>
             </form>
-    </div>
+</div>

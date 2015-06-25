@@ -11,6 +11,7 @@ $pass = mysql_real_escape_string($data->password);
 $db = new Db();
 $sql = "select userID from users where FirstName = '". $username ."' AND Password = '". $pass ."';";
 $result = $db->conn->query($sql);
+
 	
 		if(mysqli_num_rows($result) > 0)
 		{

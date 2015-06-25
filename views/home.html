@@ -1,8 +1,11 @@
 <md-toolbar class="md-primary" layout="row">
     <a href="#/">Home</a>
 </md-toolbar>
-<md-content flex style="padding-right:50px;" layout="row">
+<md-content flex style="padding-right:50px;" layout="row" ng-init="checkifloggedin();">
     <div md-swipe-left="onSwipeLeft()" layout="row" flex layout-align="center center">
-        Welcome to the homepage <% loggedinuser %>
+        Welcome to the homepage <% loggedinuser.firstName %> <% loggedinuser.lastName %>
     </div>
+    <md-button ng-click="logout()" class="md-primary">
+          Logout
+        </md-button>
 </md-content>

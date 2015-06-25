@@ -20,7 +20,7 @@ app.config(function($routeProvider) {
                 controller: 'AngMpdController',
                 templateUrl: './views/home.html'
             })
-//        .otherwise({
-//        redirectTo: '/'
-//      });
+        .otherwise({
+        redirectTo: '/'
+      });
     });
