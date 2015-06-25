@@ -28,7 +28,7 @@
                   <input type="password" name="password" ng-model="newuser.password">
             </md-input-container>
             <md-input-container>
-                <md-button ng-click="login()" class="md-raised loginbutton" name="add">Sign up</md-button>
+                <md-button ng-click="adduser()" class="md-raised loginbutton" name="add">Sign up</md-button>
             </md-input-container>
             </form>
             <span layout-padding>
@@ -45,7 +45,7 @@
         <div ng-show="showerror" layout="row" layout-align="space-around" class="errormessage">
             <% error %>
         </div>
-        <form name="login" method="POST">
+        <form name="login" method="post">
         <md-input-container>
               <label>Username</label>
               <input ng-model="loginuser.email" name="email">

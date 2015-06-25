@@ -1,0 +1,18 @@
+<div layout="column"  class="formlayout md-whiteframe-z2">
+        <div ng-show="showerror" layout="row" layout-align="space-around" class="errormessage">
+            <% error %>
+        </div>
+        <form name="addcustomer" method="POST">
+        <md-input-container>
+              <label>Username</label>
+              <input ng-model="loginuser.username" name="username">
+        </md-input-container>
+         <md-input-container>
+              <label>Password</label>
+              <input type="password" name="password" ng-model="loginuser.password">
+            </md-input-container>
+            <md-input-container>
+            <md-button ng-click="login()" class="md-raised loginbutton" name="login">Login</md-button>
+        </md-input-container>
+            </form>
+    </div>

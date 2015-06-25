@@ -30,12 +30,21 @@ $scope.close = function () {
             console.log("inserted Successfully");
         });
     };
-    $scope.login = function(add){
-        $http.post("./views/php/login.php",{'email': $scope.loginuser.email, 'password': $scope.loginuser.password})
-        .success(function(data, status, headers, config){
+    $scope.login = function(){
+        $http.post("./views/php/login.php", {'username':$scope.loginuser.username,'password':$scope.loginuser.password})
+        .success(function(data){
+            console.log("login succesful");
             console.log(data);
-            console.log("inserted Successfully");
-        });
+            if (data = 1) {
+                    $scope.loggedinuser = $scope.loginuser.username;
+                    window.location = "#/home";
+            }else{
+                    $scope.loginuser.username = null;
+                    $scope.loginuser.password = null;
+                    $scope.error = "Username or password is incorrect!";
+                    $scope.showerror = true;
+            }
+        })
     };
 //    $scope.login = function(add){
 //        $scope.showerror = false;

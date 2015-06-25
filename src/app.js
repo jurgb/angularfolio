@@ -10,7 +10,17 @@ app.config(function($routeProvider) {
                 controller: 'AngMpdController',
                 templateUrl: './views/signup.html'
             })
-        .otherwise({
-        redirectTo: '/'
-      });
+        .when('/login',
+            {
+                controller: 'AngMpdController',
+                templateUrl: './views/login.html'
+            })
+        .when('/home',
+            {
+                controller: 'AngMpdController',
+                templateUrl: './views/home.html'
+            })
+//        .otherwise({
+//        redirectTo: '/'
+//      });
     });
