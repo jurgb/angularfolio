@@ -1,10 +1,17 @@
-<div layout="column"  class="formlayout md-whiteframe-z2">
+
+
+
+<md-toolbar class="md-primary" layout="row">
+    <a href="#/">Home</a>
+</md-toolbar>
+<md-content flex layout="row" layout-align="center start">
+    <div layout="column" layout-padding  class="formlayout md-whiteframe-z2">
         <div ng-show="showerror" layout="row" layout-align="space-around" class="errormessage">
             <% error %>
         </div>
         <form name="loginform" method="POST">
         <md-input-container>
-              <label>Username</label>
+              <label>Email</label>
               <input ng-model="loginuser.username" name="username">
         </md-input-container>
          <md-input-container>
@@ -16,3 +23,4 @@
         </md-input-container>
             </form>
 </div>
+</md-content>

@@ -13,6 +13,6 @@
     "angular-route":"x"
   },
   "devDependencies": {
-    "angular-material": "~0.8.2"
+    "angular-material": "~0.10.0"
   }
 }

@@ -1,11 +1,52 @@
 <md-toolbar class="md-primary" layout="row">
-    <a href="#/">Home</a>
+                <button ng-click="toggleSidenav('left')" hide-gt-sm class="menuBtn">
+                    <span class="visuallyhidden">Menu</span>
+                </button>
+
+            <div flex class="md-toolbar-tools" layout="row" layout-align="end">
+                   <md-button class="menulink" href="#/">Startpagina</md-button>                
+                <span class="menulink borderleft" >
+                    <md-menu md-position-mode="target-right target" md-offset="0 53">
+                      <md-button layout="row" ng-click="$mdOpenMenu()">
+                        <span><% loggedinuser.firstName %> <span hide-sm><% loggedinuser.lastName %></span></span>
+                        <img class="profilepic" src="./assets/images/proflepics/me.png" alt="">        
+                      </md-button>
+                      <md-menu-content>
+                        <md-menu-item>
+                          <md-button>
+                            My profile
+                          </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                          <md-button>
+                            Account settings
+                          </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                          <md-button>
+                            option 3
+                          </md-button>
+                        </md-menu-item>
+                        <md-menu-divider></md-menu-divider>
+                        <md-menu-item>
+                          <md-button ng-click="logout()">
+                            Log out
+                          </md-button>
+                        </md-menu-item>
+                      </md-menu-content>
+                </md-menu>
+                </span>
+            </div>          
 </md-toolbar>
-<md-content flex style="padding-right:50px;" layout="row" ng-init="checkifloggedin();">
-    <div md-swipe-left="onSwipeLeft()" layout="row" flex layout-align="center center">
-        Welcome to the homepage <% loggedinuser.firstName %> <% loggedinuser.lastName %>
+
+
+<md-content flex layout="column" ng-init="checkifloggedin();">
+    <div layout="row"  layout-align="center center">
+        Welcome to the homepage <% loggedinuser %>
     </div>
-    <md-button ng-click="logout()" class="md-primary">
-          Logout
-        </md-button>
+    
+
+      
+
+    
 </md-content>

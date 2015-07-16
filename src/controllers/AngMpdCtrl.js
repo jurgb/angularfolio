@@ -1,5 +1,17 @@
 app.controller("AngMpdController", function($scope, $mdSidenav, $http, $mdUtil, $log, user){
     
+    
+    
+    $scope.isOpen = false;
+      $scope.demo = {
+        isOpen: false,
+        count: 0,
+        selectedAlignment: 'md-right'
+      };
+    
+    
+    
+    
     $scope.onSwipeLeft = function(ev) {
       $scope.toggleRight();
     };
@@ -27,7 +39,7 @@ $scope.close = function () {
 $scope.loggedinuser = user.getPeopleResponse();    
 //user.savePeopleResponse(data);
     $scope.checkifloggedin = function(){
-        if ($scope.loggedinuser == null) {
+        if ($scope.loggedinuser.loggedin == false) {
             window.location = "#/login";
         }
     };
@@ -41,25 +53,25 @@ $scope.loggedinuser = user.getPeopleResponse();
     $scope.login = function(){
         $http.post("./views/php/login.php", {'username':$scope.loginuser.username,'password':$scope.loginuser.password})
         .success(function(data){
-            console.log("login succesful");
-                            console.log(data);
-            if (data == 1) {
+            console.log("login uitgevoerd, wachten op resultaat...");
+            console.log(data);
+            if (data == 0) {
                     $scope.loggedinuser = null;
-                    $scope.loggedinuser = {firstname: 'jurgen',
-                                           lastname: 'barbier'};
                     user.savePeopleResponse($scope.loggedinuser);
-                    window.location = "#/home";
-                    
-            }else{
                     $scope.loginuser.username = null;
                     $scope.loginuser.password = null;
                     $scope.error = "Username or password is incorrect!";
                     $scope.showerror = true;
+            }else{
+                    $scope.loggedinuser = null;
+                    $scope.loggedinuser = {Firstname: "Jurgen"};
+                    user.savePeopleResponse($scope.loggedinuser);
+                    window.location = "#/home";
             }
         })
     };
     $scope.logout = function(){
-        $scope.loggedinuser = null;
+        $scope.loggedinuser.loggedin = false;
         user.savePeopleResponse($scope.loggedinuser);
         window.location = "#/";
     };

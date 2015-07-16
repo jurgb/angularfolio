@@ -1,5 +1,18 @@
 app.factory('user', function() {
-    var peopleResponse = {firstname: "jurgen"};
+    var peopleResponse = {
+        email: 'Jurgenbarbier@gmail.com',
+        firstName: 'Jurgen',
+        lastName: 'Barbier' ,
+        address: 'Randomstreet 123' ,
+        city: 'Antwerpen' ,
+        biography: 'For more info about this application tweet me @jurg_b',
+        postalCode : '2000',
+        hotelmin: "0",
+        hotelmax: "5",
+        departurepoint:'BRU',
+        food:"7",
+        loggedin: true
+    };
         return {
             savePeopleResponse:function (data) {
                 peopleResponse = data;

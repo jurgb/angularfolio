@@ -9,13 +9,14 @@ $pass = mysql_real_escape_string($data->password);
 // SELECT `userID` FROM users WHERE `FirstName` = "jurgb" AND `Password` = "test123"
 
 $db = new Db();
-$sql = "select userID from users where FirstName = '". $username ."' AND Password = '". $pass ."';";
+$sql = "select * from users where Email = '". $username ."' AND Password = '". $pass ."';";
 $result = $db->conn->query($sql);
+$row = $result->fetch_assoc();
 
-	
-		if(mysqli_num_rows($result) > 0)
+		if($result->num_rows ==1)
 		{
-			$free = true;
+           
+			$free = json_encode($row);
 		}			
 		else
 		{

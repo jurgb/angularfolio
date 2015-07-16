@@ -12,3 +12,55 @@
 .signupform{
     width:250px;   
 }
+/*
+|----------------------
+|    Approved CSS 
+|----------------------
+*/
+ /*menu btn*/
+    .menuBtn {
+      background: transparent url("../images/logoblue.png") no-repeat  center center;
+    }
+    .menuBtn {
+      background-color: transparent;
+        background-size: contain;
+      border: none;
+      height: 45px;
+      margin: 10px 0 0 10px;
+      width: 45px;
+    }
+    .visuallyhidden {
+      border: 0;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0; 
+      position: absolute;
+      width: 1px;
+    }
+    .borderleft{
+        border-left: 1px #fff solid;
+        padding-left: 10px;
+    }
+/*
+|----------------------
+|    Newly added CSS 
+|----------------------
+*/
+
+
+/*
+|----------------------
+|    CSS in development
+|----------------------
+*/
+
+.profilepic
+{
+    max-height: 35px;
+    max-width: 30px;
+    vertical-align: middle;
+    margin-left: 5px;
+    border-radius: 5px;
+}
