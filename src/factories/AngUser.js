@@ -1,5 +1,6 @@
 app.factory('user', function() {
     var peopleResponse = {
+        userID: '1',
         email: 'Jurgenbarbier@gmail.com',
         firstName: 'Jurgen',
         lastName: 'Barbier' ,
@@ -11,7 +12,7 @@ app.factory('user', function() {
         hotelmax: "5",
         departurepoint:'BRU',
         food:"7",
-        loggedin: true
+        loggedin: false
     };
         return {
             savePeopleResponse:function (data) {

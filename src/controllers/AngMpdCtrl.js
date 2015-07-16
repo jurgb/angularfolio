@@ -64,7 +64,8 @@ $scope.loggedinuser = user.getPeopleResponse();
                     $scope.showerror = true;
             }else{
                     $scope.loggedinuser = null;
-                    $scope.loggedinuser = {Firstname: "Jurgen"};
+                    $scope.loggedinuser = data;
+                    $scope.loggedinuser.loggedin = true;
                     user.savePeopleResponse($scope.loggedinuser);
                     window.location = "#/home";
             }
@@ -75,33 +76,4 @@ $scope.loggedinuser = user.getPeopleResponse();
         user.savePeopleResponse($scope.loggedinuser);
         window.location = "#/";
     };
-//    $scope.login = function(add){
-//        $scope.showerror = false;
-//            if ($scope.loginuser.username == "jurgb") {
-//                if ($scope.loginuser.password == "3imda") {
-//                    window.location = "#/profile";
-//                }else{
-//                    $scope.loginuser.username = null;
-//                    $scope.loginuser.password = null;
-//                    $scope.error = "Please provide a valid password ";
-//                    $scope.showerror = true;
-//                }
-//            }else{
-//                if ($scope.loginuser.username == "Jurgb") {
-//                    if ($scope.loginuser.password == "3imda") {
-//                        window.location = "#/profile";
-//                    }else{
-//                        $scope.loginuser.username = null;
-//                        $scope.loginuser.password = null;
-//                        $scope.error = "Please provide a valid password ";
-//                        $scope.showerror = true;
-//                    }
-//                }else{
-//                    $scope.loginuser.username = null;
-//                    $scope.loginuser.password = null;
-//                    $scope.error = "Please get an autorised username";
-//                    $scope.showerror = true;
-//                }
-//            }
-//    };
 });

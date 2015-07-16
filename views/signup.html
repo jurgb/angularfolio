@@ -1,5 +1,10 @@
 <md-toolbar class="md-primary" layout="row">
-    <a href="#/">Home</a>
+    <button ng-click="toggleSidenav('left')" hide-gt-sm class="menuBtn">
+        <span class="visuallyhidden">Menu</span>
+    </button>
+    <div flex class="md-toolbar-tools" layout="row" layout-align="end">
+        <md-button class="menulink" href="#/">Home</md-button>
+    </div>
 </md-toolbar>
 <md-content flex style="padding-right:50px;" layout="row">
     <div md-swipe-left="onSwipeLeft()" layout="row" flex layout-align="center center">
