@@ -18,7 +18,17 @@ app.config(function($routeProvider) {
         .when('/home',
             {
                 controller: 'AngMpdController',
-                templateUrl: './views/home.html'
+                templateUrl: './views/loggedin/home.html'
+            })
+        .when('/profile',
+            {
+                controller: 'AngMpdController',
+                templateUrl: './views/loggedin/profile.html'
+            })
+        .when('/todo',
+            {
+                controller: 'AngMpdController',
+                templateUrl: './views/loggedin/todo.html'
             })
         .otherwise({
         redirectTo: '/'

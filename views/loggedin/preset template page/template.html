@@ -3,7 +3,8 @@
                 <span class="visuallyhidden">Menu</span>
             </button>
             <div flex class="md-toolbar-tools" layout="row" layout-align="end">
-                   <md-button class="menulink" href="#/home">Startpagina</md-button>                
+                   <md-button class="menulink" href="#/home">Startpagina</md-button>
+                   <md-button class="menulink" href="#/todo">To-do list</md-button>                
                 <span class="menulink borderleft" >
                     <md-menu md-position-mode="target-right target" md-offset="0 53">
                       <md-button layout="row" ng-click="$mdOpenMenu()">
@@ -12,7 +13,7 @@
                       </md-button>
                       <md-menu-content>
                         <md-menu-item>
-                          <md-button>
+                          <md-button href="#/profile">
                             My profile
                           </md-button>
                         </md-menu-item>
@@ -39,6 +40,6 @@
 </md-toolbar>
 <md-content flex layout="column" ng-init="checkifloggedin();">
     <div layout="row"  layout-align="center center">
-        Welcome to the homepage <% loggedinuser %>
+        Welcome to the template page <% loggedinuser %>
     </div>
 </md-content>

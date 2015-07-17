@@ -1,6 +1,41 @@
 app.controller("AngMpdController", function($scope, $mdSidenav, $http, $mdUtil, $log, user){
     
     
+
+    //*******************
+// USERTABS
+//*******************
+$scope.selectedUsertab = null;
+$scope.usertabs = [{
+      id:'1',
+      name: 'Basic Info',
+      iconurl: './assets/images/icons/basicinfo.svg'
+  }, {
+      id:'2',
+      name: 'Travel info',
+      iconurl: './assets/images/icons/transport.svg'
+  }, {
+      id:'3',
+      name: 'entertainement',
+      iconurl: './assets/images/icons/activities.svg'
+}];
+$scope.selectedUsertab = $scope.usertabs[0];
+$scope.selectUsertab = selectUsertab;
+function selectUsertab(muppet) {
+    $scope.selectedUsertab = angular.isNumber(muppet) ? $scope.usertabs[muppet] : muppet;
+    $scope.loading = "true";
+    $scope.toggleSidenav('left');
+  }
+$scope.toggleSidenav = toggleSidenav;
+    function toggleSidenav(name) {
+        $mdSidenav(name).toggle();
+}
+    
+    
+    
+    
+    
+    
     
     $scope.isOpen = false;
       $scope.demo = {
@@ -8,29 +43,8 @@ app.controller("AngMpdController", function($scope, $mdSidenav, $http, $mdUtil, 
         count: 0,
         selectedAlignment: 'md-right'
       };
-    
-    
-    
-    
     $scope.onSwipeLeft = function(ev) {
-      $scope.toggleRight();
-    };
-function buildToggler(navID) {
-      var debounceFn =  $mdUtil.debounce(function(){
-            $mdSidenav(navID)
-              .toggle()
-              .then(function () {
-                $log.debug("toggle " + navID + " is done");
-              });
-          },300);
-      return debounceFn;
-    }
-    $scope.toggleRight = buildToggler('right');    
-$scope.close = function () {
-      $mdSidenav('right').close()
-        .then(function () {
-          $log.debug("close RIGHT is done");
-        });
+      $scope.toggleSidenav('right');
     };
 //***********************
 // User related functions

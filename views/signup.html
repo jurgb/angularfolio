@@ -12,32 +12,32 @@
     </div>
     <div  layout="row" layout-align="end center">
         <div layout="column"  class="signupform md-whiteframe-z1">
-          <md-toolbar class="md-theme-light">
+          <md-toolbar>
                 <h1 class="md-toolbar-tools">Signup</h1>
           </md-toolbar>
-           <form layout-padding name="addcustomer" method="POST">
+           <form layout-padding name="addcustomer" method="POST" >
             <md-input-container>
                   <label>Firstname</label>
-                  <input ng-model="newuser.firstName" name="firstName">
+                  <input ng-model="newuser.firstName" name="firstName" readonly onfocus="this.removeAttribute('readonly');">
             </md-input-container>
             <md-input-container>
                   <label>Lastname</label>
-                  <input ng-model="newuser.lastName" name="lastName">
+                  <input ng-model="newuser.lastName" name="lastName" readonly onfocus="this.removeAttribute('readonly');">
             </md-input-container>
             <md-input-container>
                   <label>Email</label>
-                  <input ng-model="newuser.email" name="email">
+                  <input ng-model="newuser.email" name="email" readonly onfocus="this.removeAttribute('readonly');">
             </md-input-container>
              <md-input-container>
                   <label>Password</label>
-                  <input type="password" name="password" ng-model="newuser.password">
+                  <input type="password" name="password" ng-model="newuser.password" readonly onfocus="this.removeAttribute('readonly');">
             </md-input-container>
             <md-input-container>
                 <md-button ng-click="adduser()" class="md-raised loginbutton" name="add">Sign up</md-button>
             </md-input-container>
             </form>
             <span layout-padding>
-                <p>Already have an account? <a hide-gt-sm href="#/login">Login</a> <a hide-sm href="#" ng-click="toggleRight()" onClick=" return false;">Login</a></p>
+                <p>Already have an account? <a hide-gt-sm href="#/login">Login</a> <a hide-sm href="#" ng-click="toggleSidenav('right')" onClick=" return false;">Login</a></p>
             </span>
         </div>
     </div>
@@ -63,7 +63,7 @@
             <md-button ng-click="login()" class="md-raised loginbutton" name="login">Login</md-button>
         </md-input-container>
             </form>
-        <md-button ng-click="close()" class="md-primary">
+        <md-button ng-click="toggleSidenav('right')" class="md-primary">
           Close
         </md-button>
       </md-content>

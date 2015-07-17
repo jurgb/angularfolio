@@ -1,0 +1,149 @@
+<md-toolbar class="md-primary" layout="row">
+            <button ng-click="toggleSidenav('left')" hide-gt-sm class="menuBtn">
+                <span class="visuallyhidden">Menu</span>
+            </button>
+            <div flex class="md-toolbar-tools" layout="row" layout-align="end">
+                   <md-button class="menulink" href="#/home">Startpagina</md-button>
+                   <md-button class="menulink" href="#/todo">To-do list</md-button>                
+                <span class="menulink borderleft" >
+                    <md-menu md-position-mode="target-right target" md-offset="0 53">
+                      <md-button layout="row" ng-click="$mdOpenMenu()">
+                        <span><% loggedinuser.firstName %> <span hide-sm><% loggedinuser.lastName %></span></span>
+                        <img class="profilepic" src="./assets/images/proflepics/me.png" alt="<% loggedinuser.firstName %> <% loggedinuser.lastName %>'s profile picture">    
+                      </md-button>
+                      <md-menu-content>
+                        <md-menu-item>
+                          <md-button href="#/profile">
+                            My profile
+                          </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                          <md-button>
+                            Account settings
+                          </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                          <md-button>
+                            option 3
+                          </md-button>
+                        </md-menu-item>
+                        <md-menu-divider></md-menu-divider>
+                        <md-menu-item>
+                          <md-button ng-click="logout()">
+                            Log out
+                          </md-button>
+                        </md-menu-item>
+                      </md-menu-content>
+                </md-menu>
+                </span>
+            </div>          
+</md-toolbar>
+<md-content flex layout="column" ng-init="checkifloggedin();">
+    <div style="background-color:#eee;" layout="column"  layout-align="center center">
+        <section>
+          <md-subheader class="md-primary">Items in progress</md-subheader>
+          <md-list layout-padding>
+            <md-list-item class="md-3-line">
+                <img ng-src="./assets/images/logo.png" class="md-avatar" alt="">
+                <div class="md-list-item-text">
+                  <h3>progress 1</h3>
+                  <h4>sub progress 1</h4>
+                  <p>
+                    blablabalablalbablaba
+                  </p>
+                </div>
+            </md-list-item>
+            <md-list-item class="md-3-line">
+                <img ng-src="./assets/images/logo.png" class="md-avatar" alt="">
+                <div class="md-list-item-text">
+                  <h3>progress 1</h3>
+                  <h4>sub progress 1</h4>
+                  <p>
+                    blablabalablalbablaba
+                  </p>
+                </div>
+            </md-list-item>
+            <md-list-item class="md-3-line">
+                <img ng-src="./assets/images/logo.png" class="md-avatar" alt="">
+                <div class="md-list-item-text">
+                  <h3>progress 1</h3>
+                  <h4>sub progress 1</h4>
+                  <p>
+                    blablabalablalbablaba
+                  </p>
+                </div>
+            </md-list-item>
+          </md-list>
+        </section>
+        <section>
+          <md-subheader class="md-primary">Items to start</md-subheader>
+          <md-list layout-padding>
+            <md-list-item class="md-3-line">
+                <img ng-src="./assets/images/logo.png" class="md-avatar" alt="">
+                <div class="md-list-item-text">
+                  <h3>start 1</h3>
+                  <h4>sub start 1</h4>
+                  <p>
+                    qsdmlfjqsmfkjqsmlfj
+                  </p>
+                </div>
+            </md-list-item>
+            <md-list-item class="md-3-line">
+                <img ng-src="./assets/images/logo.png" class="md-avatar" alt="">
+                <div class="md-list-item-text">
+                  <h3>start 1</h3>
+                  <h4>sub start 1</h4>
+                  <p>
+                    qsdmlfjqsmfkjqsmlfj
+                  </p>
+                </div>
+            </md-list-item>
+            <md-list-item class="md-3-line">
+                <img ng-src="./assets/images/logo.png" class="md-avatar" alt="">
+                <div class="md-list-item-text">
+                  <h3>start 1</h3>
+                  <h4>sub start 1</h4>
+                  <p>
+                    qsdmlfjqsmfkjqsmlfj
+                  </p>
+                </div>
+            </md-list-item>
+          </md-list>
+        </section>
+        <section>
+      <md-subheader class="md-primary">Items that are done</md-subheader>
+      <md-list layout-padding>
+        <md-list-item class="md-3-line">
+            <img ng-src="./assets/images/logo.png" class="md-avatar" alt="">
+            <div class="md-list-item-text">
+              <h3>done 1</h3>
+              <h4>sub done 1</h4>
+              <p>
+                husfqsdfqlskjfh
+              </p>
+            </div>
+        </md-list-item>
+        <md-list-item class="md-3-line">
+            <img ng-src="./assets/images/logo.png" class="md-avatar" alt="">
+            <div class="md-list-item-text">
+              <h3>done 1</h3>
+              <h4>sub done 1</h4>
+              <p>
+                husfqsdfqlskjfh
+              </p>
+            </div>
+        </md-list-item>
+        <md-list-item class="md-3-line">
+            <img ng-src="./assets/images/logo.png" class="md-avatar" alt="">
+            <div class="md-list-item-text">
+              <h3>done 1</h3>
+              <h4>sub done 1</h4>
+              <p>
+                husfqsdfqlskjfh
+              </p>
+            </div>
+        </md-list-item>
+      </md-list>
+    </section>
+    </div>
+</md-content>

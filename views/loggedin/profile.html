@@ -1,0 +1,135 @@
+<md-toolbar class="md-primary" layout="row">
+            <button ng-click="toggleSidenav('left')" hide-gt-sm class="menuBtn">
+                <span class="visuallyhidden">Menu</span>
+            </button>
+            <div flex class="md-toolbar-tools" layout="row" layout-align="end">
+                   <md-button class="menulink" href="#/home">Startpagina</md-button>                
+                <span class="menulink borderleft" >
+                    <md-menu md-position-mode="target-right target" md-offset="0 53">
+                      <md-button layout="row" ng-click="$mdOpenMenu()">
+                        <span><% loggedinuser.firstName %> <span hide-sm><% loggedinuser.lastName %></span></span>
+                        <img class="profilepic" src="./assets/images/proflepics/me.png" alt="<% loggedinuser.firstName %> <% loggedinuser.lastName %>'s profile picture">    
+                      </md-button>
+                      <md-menu-content>
+                        <md-menu-item>
+                          <md-button href="#/profile">
+                            My profile
+                          </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                          <md-button>
+                            Account settings
+                          </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                          <md-button>
+                            option 3
+                          </md-button>
+                        </md-menu-item>
+                        <md-menu-divider></md-menu-divider>
+                        <md-menu-item>
+                          <md-button ng-click="logout()">
+                            Log out
+                          </md-button>
+                        </md-menu-item>
+                      </md-menu-content>
+                </md-menu>
+                </span>
+            </div>          
+</md-toolbar>
+<md-content layout-fill layout="column" ng-init="checkifloggedin();">
+    <div layout-fill layout="column"  layout-align="center center">
+        <div layout-fill flex layout="row">
+            <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+                <md-list layout="column" class="categorie-list">
+                    <md-item ng-repeat="it in usertabs">
+                        <md-item-content>
+                            <md-button ng-click="selectUsertab(it)" ng-class="{'selected' : it === selectedUsertab }">
+                                <img ng-src="<% it.iconurl %>" class="face" alt="">
+                                <% it.name %>
+                            </md-button>
+                        </md-item-content>
+                    </md-item>
+                </md-list>
+            </md-sidenav>
+            <div layout-fill ng-switch="selectedUsertab.id">
+                <md-content ng-switch-when="1" layout="column" flex>
+                    <div layout-fill layout-align="center center" layout="column">
+                        <form class="userform" layout-padding name="userForm">
+                          <div layout layout-sm="column">
+                            <md-input-container flex>
+                              <label>First name</label>
+                              <input ng-model="user.firstName">
+                            </md-input-container>
+                            <md-input-container flex>
+                              <label>Last Name</label>
+                              <input ng-model="user.lastName">
+                            </md-input-container>
+                          </div>
+                          <md-input-container>
+                            <label>E-mail</label>
+                            <input ng-model="user.email">
+                          </md-input-container>
+                          <md-input-container>
+                            <label>Street</label>
+                            <input ng-model="user.address">
+                          </md-input-container>
+                          <div layout layout-sm="column">
+                            <md-input-container flex>
+                              <label>Postal Code</label>
+                              <input ng-model="user.postalCode">
+                            </md-input-container>
+                            <md-input-container flex>
+                              <label>City</label>
+                              <input ng-model="user.city">
+                            </md-input-container>
+                           
+                          </div>
+                          <md-input-container flex>
+                            <label>About me</label>
+                            <textarea ng-model="user.biography" columns="1" md-maxlength="200"></textarea>
+                          </md-input-container>
+                        </form>                   
+                    </div>
+                </md-content>
+                
+                <md-content ng-switch-when="2" layout="row" layout-align="center center">
+                    
+                <form class="userform" layout-padding layout="column" name="userForm">
+                    <div layout="column" layout-align="center center">
+                        <div layout="column" layout-align="center center">
+                        <h2>Select your travel methods</h2>
+                        <div layout-sm="column" layout="row">
+                            <md-checkbox ng-model="user.travel.airtravel" class="md-primary">Airtravel</md-checkbox>
+                            <md-checkbox ng-model="user.travel.traintravel" class="md-primary">Traintravel</md-checkbox>
+                            <md-checkbox ng-model="user.travel.cartravel" class="md-primary">Cartravel</md-checkbox>
+                            <md-checkbox ng-model="user.travel.boattravel" class="md-primary">Boattravel</md-checkbox>
+                        </div>
+                        <md-select placeholder="Choose the nearsest airport" ng-model='user.departurepoint' ng-init="departures()">
+                            <md-option class="md-primary" ng-repeat="dep in departurepoints" value='<% dep.value %>'><% dep.label %></md-option>
+                        </md-select>
+                        </div>
+                        <div layout="column" layout-fill layout-align="center center">
+                            <h2>Hotel settings</h2>
+                            Minimum stars
+                            <div layout="row" layout-fill layout-align="space-around">
+                                <md-slider flex md-discrete ng-model="user.hotelmin" step="0.5" min="0" max="5" aria-label="green" id="green-slider" class="md-primary"></md-slider>
+                            </div>
+                            Maximum stars
+                            <div layout="row" layout-fill layout-align="space-around">
+                                <md-slider flex md-discrete ng-model="user.hotelmax" step="0.5" min="0" max="5" aria-label="green" id="green-slider" class="md-primary"></md-slider>
+                            </div>
+                            How good should the food be
+                            <div layout="row" layout-fill layout-align="space-around">
+                                <md-slider flex md-discrete ng-model="user.food" min="1" max="10" aria-label="green" id="green-slider" class="md-primary"></md-slider>
+                            </div>
+                        </div>
+                    </div>      
+                </form>
+                </md-content>
+            <md-content ng-switch-when="3" layout="column" layout-fill layout-align="start center" ng-init="activitycat()">
+
+            </md-content>
+        </div>
+    </div>
+</md-content>
