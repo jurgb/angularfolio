@@ -38,112 +38,82 @@
                 </span>
             </div>          
 </md-toolbar>
-<md-content flex layout="column" ng-init="checkifloggedin();">
-    <div style="background-color:#eee;" layout="column"  layout-align="center center">
-        <section>
-          <md-subheader class="md-primary">Items in progress</md-subheader>
-          <md-list layout-padding>
-            <md-list-item class="md-3-line">
-                <img ng-src="./assets/images/logo.png" class="md-avatar" alt="">
-                <div class="md-list-item-text">
-                  <h3>progress 1</h3>
-                  <h4>sub progress 1</h4>
-                  <p>
-                    blablabalablalbablaba
-                  </p>
+<md-content layout="column" ng-init="checkifloggedin();" >
+   <div layout="row" layout-align="center center">
+       <div>
+          
+          
+           
+            <md-tabs md-dynamic-height style="overflow:hidden;" layout-fill >
+                        <div layout-fill  layout="row">
+                            
+                            <md-tab  class="md-primary"  label="Todo's in progress">
+                                <md-content class="md-padding" layout-wrap>
+                                    <md-list style="background-color:#eee;width:600px;margin-top:15px;" layout-align="center center" layout="column" layout-padding>
+            <md-list-item flex class="md-3-line todoItem">
+                <img ng-src="./assets/images/promopic.jpg" class="md-avatar" alt="">
+                <md-progress-circular style="margin-left:-61px;margin-top:11px;"  md-mode="determinate" value="<% progressbarnumber %>" md-diameter="55"></md-progress-circular >
+                <div style="margin-left:10px;" flex layout="row" class="md-list-item-text">
+                    <div flex >
+                         <h3>progress 1</h3>
+                         <h4>sub titel</h4>
+                          <p >
+                            Hier komt een klein beetje uitleg over het todo item dat wordt getoond, dit is een tekstje om te kijken of alles werkt zoals gewenst
+                          </p>
+                    </div>
+                    <div layout="row">
+                    <md-button class="md-icon-button" aria-label="Done">
+                        <md-icon md-svg-src="./assets/images/icons/basicinfo.svg"></md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Edit">
+                        <md-icon md-svg-src="./assets/images/icons/basicinfo.svg"></md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Delete">
+                        <md-icon md-svg-src="./assets/images/icons/basicinfo.svg"></md-icon>
+                    </md-button>
+                    </div>
                 </div>
             </md-list-item>
-            <md-list-item class="md-3-line">
-                <img ng-src="./assets/images/logo.png" class="md-avatar" alt="">
-                <div class="md-list-item-text">
-                  <h3>progress 1</h3>
-                  <h4>sub progress 1</h4>
-                  <p>
-                    blablabalablalbablaba
-                  </p>
-                </div>
-            </md-list-item>
-            <md-list-item class="md-3-line">
-                <img ng-src="./assets/images/logo.png" class="md-avatar" alt="">
-                <div class="md-list-item-text">
-                  <h3>progress 1</h3>
-                  <h4>sub progress 1</h4>
-                  <p>
-                    blablabalablalbablaba
-                  </p>
-                </div>
-            </md-list-item>
-          </md-list>
-        </section>
-        <section>
-          <md-subheader class="md-primary">Items to start</md-subheader>
-          <md-list layout-padding>
-            <md-list-item class="md-3-line">
-                <img ng-src="./assets/images/logo.png" class="md-avatar" alt="">
-                <div class="md-list-item-text">
-                  <h3>start 1</h3>
-                  <h4>sub start 1</h4>
-                  <p>
-                    qsdmlfjqsmfkjqsmlfj
-                  </p>
-                </div>
-            </md-list-item>
-            <md-list-item class="md-3-line">
-                <img ng-src="./assets/images/logo.png" class="md-avatar" alt="">
-                <div class="md-list-item-text">
-                  <h3>start 1</h3>
-                  <h4>sub start 1</h4>
-                  <p>
-                    qsdmlfjqsmfkjqsmlfj
-                  </p>
-                </div>
-            </md-list-item>
-            <md-list-item class="md-3-line">
-                <img ng-src="./assets/images/logo.png" class="md-avatar" alt="">
-                <div class="md-list-item-text">
-                  <h3>start 1</h3>
-                  <h4>sub start 1</h4>
-                  <p>
-                    qsdmlfjqsmfkjqsmlfj
-                  </p>
+            <md-list-item flex class="md-3-line todoItem">
+                <img ng-src="./assets/images/promopic.jpg" class="md-avatar" alt="">
+                <md-progress-circular style="margin-left:-61px;margin-top:11px;"  md-mode="determinate" value="<% progressbarnumber %>" md-diameter="55"></md-progress-circular >
+                <div style="margin-left:10px;" flex layout="row" class="md-list-item-text">
+                    <div flex >
+                         <h3>progress 1</h3>
+                         <h4>sub titel</h4>
+                          <p >
+                            Hier komt een klein beetje uitleg over het todo item dat wordt getoond, dit is een tekstje om te kijken of alles werkt zoals gewenst
+                          </p>
+                    </div>
+                    <div layout="row">
+                    <md-button ng-click="setdone();" class="md-icon-button" aria-label="Done">
+                        <md-icon md-svg-src="./assets/images/icons/basicinfo.svg"></md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Edit">
+                        <md-icon md-svg-src="./assets/images/icons/basicinfo.svg"></md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Delete">
+                        <md-icon md-svg-src="./assets/images/icons/basicinfo.svg"></md-icon>
+                    </md-button>
+                    </div>
                 </div>
             </md-list-item>
           </md-list>
-        </section>
-        <section>
-      <md-subheader class="md-primary">Items that are done</md-subheader>
-      <md-list layout-padding>
-        <md-list-item class="md-3-line">
-            <img ng-src="./assets/images/logo.png" class="md-avatar" alt="">
-            <div class="md-list-item-text">
-              <h3>done 1</h3>
-              <h4>sub done 1</h4>
-              <p>
-                husfqsdfqlskjfh
-              </p>
-            </div>
-        </md-list-item>
-        <md-list-item class="md-3-line">
-            <img ng-src="./assets/images/logo.png" class="md-avatar" alt="">
-            <div class="md-list-item-text">
-              <h3>done 1</h3>
-              <h4>sub done 1</h4>
-              <p>
-                husfqsdfqlskjfh
-              </p>
-            </div>
-        </md-list-item>
-        <md-list-item class="md-3-line">
-            <img ng-src="./assets/images/logo.png" class="md-avatar" alt="">
-            <div class="md-list-item-text">
-              <h3>done 1</h3>
-              <h4>sub done 1</h4>
-              <p>
-                husfqsdfqlskjfh
-              </p>
-            </div>
-        </md-list-item>
-      </md-list>
-    </section>
-    </div>
+                                </md-content>
+                            </md-tab>
+                            <md-tab  class="md-primary"  label="Todo's to start">
+                                <md-content>
+                                    Geen items gevonden
+                                </md-content>
+                            </md-tab>
+                            <md-tab  class="md-primary"  label="All finisched Todo's">
+                                <md-content>
+                                    Geen items gevonden
+                                </md-content>
+                            </md-tab>
+                        </div>
+                        </md-tabs> 
+        </div> 
+   </div>
+    
 </md-content>

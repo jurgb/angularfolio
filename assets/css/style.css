@@ -83,3 +83,8 @@
       border-right: 4px solid #48bebc;
       background-color: rgba(255,255,255,0.05);
     }
+
+.todoItem
+{
+    width: 500px;   
+}

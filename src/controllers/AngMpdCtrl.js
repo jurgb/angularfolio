@@ -1,8 +1,15 @@
 app.controller("AngMpdController", function($scope, $mdSidenav, $http, $mdUtil, $log, user){
     
     
+$scope.progressbarnumber = 80;
 
-    //*******************
+$scope.setdone = setdone;
+function setdone(){
+    $scope.progressbarnumber = 100;
+}
+    
+    
+//*******************
 // USERTABS
 //*******************
 $scope.selectedUsertab = null;
